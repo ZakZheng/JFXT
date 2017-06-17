@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="lib/css/weuix.min.css" />
+  <link rel="stylesheet" href="lib/css/weui.css">
+  <link rel="stylesheet" href="lib/css/weui2.css">
+  <link rel="stylesheet" href="lib/css/weui3.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="lib/c3-0.4.13/c3.css" type="text/css">
+  <script src="lib/js/zepto.min.js"></script>
+  <script src="lib/js/zepto2.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="lib/c3-0.4.13/c3.min.js"></script>
+</head>
+
+<body ontouchstart>
+  <div class="weui-header bg-blue">
+    <h1 class="weui-headeritle">东莞市民之网计算机网络工程有限公司</h1>
+    <div class="weui-header-right">30人</div>
+  </div>
+  <div class="server-box clearfix">
+    <ul class="server-navbar">
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-99"></i><p>员工</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-93"></i><p>部门</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-115"></i><p>任务</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-37"></i><p>事件</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-106"></i><p>规则</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-67"></i><p>日志</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-125"></i><p>奖总扣分</p></a></li>
+      <li class="server-list-item">
+        <div class="animal-backgorund"></div><a href="#"><i class="icon icon-1"></i><p>排名</p></a></li>
+    </ul>
+  </div>
+  <div class="push-list">
+    <div class="weui_cell">
+      <div class="weui_cell_hd">
+        <i class="icon icon-89" style=""></i></div>
+      <div class="weui_cell_bd weui_cell_primary">
+        <p class="weui_cell_bd-title">总积分数据</p>
+        <small>19:26</small>
+      </div>
+      <div id="timebtn" class="weui_cell_ft"><i class="icon icon-83"></i>
+      </div>
+    </div>
+    <div id="chart"></div>
+    <div class="push-more"><a href="#">查看更多</a></div>
+  </div>
+</body>
+
+</html>
+<script>
+$(function() {
+
+  $('#timebtn').on('click', function() {
+    $.actions({
+      title: "选择时间",
+      onClose: function() {
+        $('#timebtn').off('click');
+      },
+      actions: [{
+        text: "昨日",
+        onClick: function() {}
+      }, {
+        text: "上周",
+        onClick: function() {}
+      }, {
+        text: "上月",
+        onClick: function() {}
+      }, {
+        text: "本周",
+        onClick: function() {}
+      }, {
+        text: "本月",
+        onClick: function() {}
+      }, {
+        text: "本年",
+        onClick: function() {}
+      }]
+    });
+  });
+});
+</script>
+<script>
+// 需要显示的总分类个数
+var dataTitleLength = 10;
+// 每一项高度
+var dataTitleHeight = 50;
+$('#chart').height(dataTitleHeight * dataTitleLength);
+
+var chart = c3.generate({
+  data: {
+    columns: [
+      ['总奖分', 30, 200, 200, 400, 150, 250, 30, 200, 200, 400, 150, 250, 30, 200, 200, 400, 150, 250, 30, 200, 200, 400, 150, 250],
+    ],
+    type: 'bar',
+    groups: [
+      ['总奖分', '总扣分']
+    ],
+    order: null // 使用默认排序
+  },
+  grid: {
+    y: {
+      lines: [{
+        value: 0
+      }]
+    }
+  },
+  axis: {
+    rotated: true, //旋转表为横向
+    x: {
+      type: 'category',
+      categories: ['销售部', '技术部', '客服部', '推广部', '推广部', '销售部', '销售部', '技术部', '客服部', '推广部', '推广部', '销售部', '销售部', '技术部', '客服部', '推广部', '推广部', '销售部', '销售部', '技术部', '客服部', '推广部', '推广部', '销售部']
+    },
+    y: {
+      show: false, //隐藏y轴，旋转后为x轴
+    }
+
+  }
+});
+
+setTimeout(function() {
+  chart.groups([
+    ['总奖分', '总扣分']
+  ])
+}, 1000);
+
+// 延时加载扣分数据
+setTimeout(function() {
+  chart.load({
+    columns: [
+      ['总扣分', 100, 50, 150, 200, 300, 100, 100, 50, 150, 200, 300, 100, 100, 50, 150, 200, 300, 100, 100, 50, 150, 200, 300, 100]
+    ]
+  });
+}, 1500);
+
+setTimeout(function() {
+  chart.groups([
+    ['总奖分', '总扣分']
+  ])
+}, 2000);
+
+$('.server-list-item').on('click', function(event) {
+  event.preventDefault();
+  $(this).find('.animal-backgorund').css('transition', 'all 0.5s');
+  $(this).addClass('active').siblings().removeClass('active').find('.animal-backgorund').css('transition', 'inherit');
+});
+</script>

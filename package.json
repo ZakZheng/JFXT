@@ -1,0 +1,35 @@
+{
+  "name": "zakzheng-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cache": "^0.4.6",
+    "gulp-concat": "^2.6.1",
+    "gulp-css-spriter": "^0.4.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-less": "^3.3.0",
+    "gulp-uglify": "^2.0.0",
+    "imagemin-pngquant": "^5.0.0"
+  },
+  "description": "压缩图片 css html 实时刷新 LESS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1258645603/sublime-backups.git"
+  },
+  "bugs": {
+    "url": "https://github.com/1258645603/sublime-backups/issues"
+  },
+  "homepage": "https://github.com/1258645603/sublime-backups#readme"
+}

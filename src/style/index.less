@@ -1,0 +1,141 @@
+body {
+  background-color: #e7e7e7;
+}
+
+.weui-header {
+  .weui-headeritle {
+    margin-left: 20px;
+    text-align: left;
+  }
+}
+
+.server-box {
+  background-color: #fff;
+  padding-bottom: 10px;
+  .server-navbar {
+    list-style: none;
+    li.server-list-item {
+      float: left;
+      width: 25%;
+      text-align: center;
+      padding: 10px 0;
+      position: relative;
+      overflow: hidden;
+      & .animal-backgorund{
+        content: "";
+        display: block;
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: rgba(0,0,0,.1);
+        z-index: 0;
+        border-radius: 25%;
+        opacity: 1;
+      }
+      &.active {
+        & .animal-backgorund {
+          width: 100px;
+          height: 100px;
+          opacity: 0;
+        }
+      }
+      a {
+        display: block;
+        line-height: 40px;
+        width: 100%;
+        i {
+          font-size: 30px;
+        }
+        .icon-99 {
+          color: #1d8fe1;
+        }
+        .icon-93 {
+          color: #f39826;
+        }
+        .icon-115 {
+          color: #f15a4a;
+        }
+        .icon-37 {
+          color: #1d8fe1;
+        }
+        .icon-106 {
+          color: #29ab91;
+        }
+        .icon-67 {
+          color: #2990dc;
+        }
+        .icon-125 {
+          color: #f39826;
+        }
+        .icon-1 {
+          color: #1d8fe1;
+        }
+        p {
+          font-size: 14px;
+          line-height: 1;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.push-list {
+  margin-top: 10px;
+  background-color: #fff;
+  .weui_cell {
+    .weui_cell_hd i {
+      border-radius: 4px;
+      display: block;
+      width: 38px;
+      line-height: 38px;
+      margin-right: 5px;
+      text-align: center;
+      color: #fff;
+      background-color: #febf94;
+    }
+    .weui_cell_bd {
+      color: #888;
+      left: 6px;
+      top: 5px;
+      position: relative;
+      .weui_cell_bd-title {
+        font-size: 14px;
+        line-height: 1;
+      }
+      small {
+        line-height: 1;
+        font-size: 12px;
+      }
+    }
+    .weui_cell_ft {
+      position: relative;
+      display: block;
+      width: 40px;
+      i {
+        font-size: 20px;
+      }
+      .weui_input {
+        position: absolute;
+        width: 40px;
+        height: 32px;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+  .push-more {
+    background-color: #f9f9f9;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    color: #888888;
+    a {
+      color: #888888 !important;
+    }
+  }
+}
