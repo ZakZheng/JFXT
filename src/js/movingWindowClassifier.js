@@ -15,16 +15,19 @@
       confirm: function(ret) {}, //普通模式点击回调当前选中对象
       compile: function(ret) {}, // 编辑模式选中回调当前选中对象
       submitChange: function(ret) {}, //提交编辑回调所有被选中对象
+      scrollContent: function(ret) {},
+      scrollContentFooter: function(ret) {},
     }
     var opts = Zepto.extend({}, defaults, options);
     // 判断是否为编辑模式
     var editFlag = false;
-    // 单选
+
+    // 顶部滚动区域初始化
     if (opts.headBar) {
       $(opts.headBar).height(opts.headBarHeight);
       var topScroll = new IScroll(opts.headBar, {
         tap: 'click',
-        deceleration: .006, //滑动速率 值越大越快
+        deceleration: 0.006, //滑动速率 值越大越快
         scrollX: true,
         scrollY: false,
         hScrollbar: false,
@@ -46,7 +49,7 @@
         });
       });
     }
-    // 列表事件
+    // 列表滚动区域初始化
     if (opts.listBar) {
       $(opts.listBar).height(opts.listBarHeight);
 
@@ -55,9 +58,10 @@
         leftScroll = new IScroll(opts.listBar, {
           bounce: false, //取消弹性滚动
           tap: 'click',
-          deceleration: .006,
+          deceleration: 0.006,
         });
       $(opts.listBar).height(opts.listBarHeight);
+      // 列表事件
       $(opts.listBar).find('li').each(function(index, el) {
         $(this).on('tap', function(event) {
           if (!editFlag) {
@@ -80,43 +84,78 @@
         });
       });
     }
-    // 内容事件
+    // 内容滚动区域初始化
     if (opts.contentBar) {
       $(opts.contentBar).height(opts.contentBarHeight);
       var rightScroll = new IScroll(opts.contentBar, {
-          // bounce: false  取消弹性滚动
           tap: 'click',
-          deceleration: .006,
-
+          deceleration: 0.006,
         }),
         typeListItem = '.rule-right .type-list .weui_cell', // 不可编辑的内容列表
         articleListItem = '.rule-right .article-list .weui_cell'; // 可编辑的内容列表
+
+      // 滚动事件
+      rightScroll.on("scrollEnd", function() {
+        if (rightScroll.maxScrollY >= rightScroll.y) {
+          opts.scrollContentFooter();
+        }
+        opts.scrollContent();
+      });
+
       // 未进入编辑状态时,内容列表只返回当前点击对象
       var defaultsListEvent = function() {
-        $(typeListItem).each(function(index, el) {
-          $(this).on('tap', function(event) {
-            if (!editFlag) {
-              $(this).addClass('on').siblings().removeClass('on');
-              opts.confirm($(this))
-              if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
-              if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
-            } else {
-              return false;
-            }
+        // 没有动画标签时
+        if (!$('.animal-backgorund').length) {
+          $(typeListItem).each(function(index, el) {
+            $(this).on('tap', function(event) {
+              if (!editFlag) {
+                $(this).addClass('on').siblings().removeClass('on');
+                opts.confirm($(this))
+                if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
+                if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
+              } else {
+                return false;
+              }
+            });
           });
-        });
-        $(articleListItem).each(function(index, el) {
-          $(this).on('tap', function(event) {
-            if (!editFlag) {
-              $(this).addClass('on').siblings().removeClass('on');
-              opts.confirm($(this))
-              if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
-              if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
-            } else {
-              return false;
-            }
+          $(articleListItem).each(function(index, el) {
+            $(this).on('tap', function(event) {
+              if (!editFlag) {
+                $(this).addClass('on').siblings().removeClass('on');
+                opts.confirm($(this))
+                if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
+                if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
+              } else {
+                return false;
+              }
+            });
           });
-        });
+        } else { // 添加了动画时
+          $('.animal-backgorund').each(function(index, el) {
+            if (!$(this).find('.animal-backgorund-mask').length) {
+              var animalBackgorundMask = $('<div class="animal-backgorund-mask"></div>')
+              $(this).append(animalBackgorundMask);
+            }
+            $(this).on('tap', function(event) {
+              if (!editFlag) {
+                $(this).addClass('on').siblings().removeClass('on');
+                opts.confirm($(this))
+                if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
+                if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
+              } else {
+                return false;
+              }
+              $(this).find('.animal-backgorund-mask').css({
+                'transition': 'transform .3s, opacity .3s',
+                'left': rightScroll.pointX - $(this).offset().left + 'px',
+                'top': rightScroll.pointY - $(this).offset().top + 'px',
+              });
+              $(this).addClass('active').find('.animal-backgorund-mask');
+              $(this).siblings().removeClass('active').find('.animal-backgorund-mask').css('transition', 'inherit');
+            });
+          });
+        }
+
       }
       defaultsListEvent();
       // 点击删除，进入编辑模式
