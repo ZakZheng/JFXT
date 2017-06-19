@@ -16,20 +16,20 @@
 
 <body ontouchstart>
   <div class="rule-bar clearfix">
-    <div class="rule-top Scroll">
-      <div class="breadcrumb scroller">
-        <a class="home" href="javascript:;" data-id="1"><i class="icon icon-27"></i></a>
-        <a href="javascript:;" data-id="2">综合表现</a>
-        <a href="javascript:;" data-id="3">考勤</a>
-        <a href="javascript:;" data-id="4">综合表现</a>
-        <a href="javascript:;" data-id="5">综合表现</a>
-        <a href="javascript:;" data-id="6">综合表现</a>
-        <a href="javascript:;" data-id="7">综合表现</a>
-        <a href="javascript:;" data-id="8">综合表现</a>
-        <a href="javascript:;" data-id="9">综合表现</a>
-        <a href="javascript:;" data-id="10">综合表现</a>
-      </div>
-    </div>
+<!--     <div class="rule-top Scroll">
+  <div class="breadcrumb scroller">
+    <a class="home" href="javascript:;" data-id="1"><i class="icon icon-27"></i></a>
+    <a href="javascript:;" data-id="2">综合表现</a>
+    <a href="javascript:;" data-id="3">考勤</a>
+    <a href="javascript:;" data-id="4">综合表现</a>
+    <a href="javascript:;" data-id="5">综合表现</a>
+    <a href="javascript:;" data-id="6">综合表现</a>
+    <a href="javascript:;" data-id="7">综合表现</a>
+    <a href="javascript:;" data-id="8">综合表现</a>
+    <a href="javascript:;" data-id="9">综合表现</a>
+    <a href="javascript:;" data-id="10">综合表现</a>
+  </div>
+</div> -->
     <div class="rule-left Scroll">
       <ul class="rule-left-bar">
         <li>综合表现</li>
@@ -66,6 +66,7 @@
     <div class="rule-right-bar">
       <div class="rule-right-top clearfix">
         <div class="searchbar_wrap"></div>
+        <div class="returnPreLayer">返回上级</div>
       </div>
       <div class="rule-right Scroll">
         <div class="scroller">
@@ -73,32 +74,32 @@
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
                 <p>售前客服</p>
+                <div class="weui_cell_ft">49</div>
               </div>
-              <div class="weui_cell_ft">49</div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
                 <p>售后客服</p>
+                <div class="weui_cell_ft">35</div>
               </div>
-              <div class="weui_cell_ft">35</div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
                 <p>售后客服</p>
+                <div class="weui_cell_ft">35</div>
               </div>
-              <div class="weui_cell_ft">35</div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
                 <p>售后客服</p>
+                <div class="weui_cell_ft">35</div>
               </div>
-              <div class="weui_cell_ft">35</div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
                 <p>售后客服</p>
+                <div class="weui_cell_ft">35</div>
               </div>
-              <div class="weui_cell_ft">35</div>
             </a>
           </div>
           <div class="weui_cells article-list weui_cells_checkbox">
@@ -345,10 +346,10 @@
 
     //  开启滑动和点击事件
     $('.rule-bar').movingWindowClassifier({
-      headBar: ".rule-top",
+      // headBar: ".rule-top",
       listBar: ".rule-left",
       contentBar: ".rule-right",
-      headBarHeight: $('.rule-top').height(),
+      // headBarHeight: $('.rule-top').height(),
       listBarHeight: window.innerHeight - $('.rule-top').height() - $('#footer').height(),
       contentBarHeight: window.innerHeight - $('.rule-top').height() - $('.rule-right-top').height() - $('#footer').height(),
       confirm: function(ret) {

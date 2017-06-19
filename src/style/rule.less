@@ -156,8 +156,11 @@
       width: 78%;
       border-top: 1px solid @borderGrayColor;
       .rule-right-top {
+        padding: 10px 10px;
         .searchbar_wrap {
+          padding: 0;
           .weui_search_bar {
+            padding: 0;
             background-color: #fff;
             .weui_search_outer {
               background-color: transparent;
@@ -173,6 +176,15 @@
               content: none;
             }
           }
+        }
+        .returnPreLayer {
+          font-size: 12px;
+          text-align: center;
+          border-radius: 4px;
+          background-color: @mainColor;
+          color: #fff;
+          margin-top: 10px;
+          line-height: 30px;
         }
       }
       .rule-right {
@@ -199,6 +211,7 @@
               padding-left: 16px;
               height: 18px;
               z-index: 6;
+              line-height: 18px;
               &::before {
                 content: "";
                 width: 0;
@@ -209,11 +222,13 @@
                 left: 0;
                 top: 2px;
               }
-            }
-            .weui_cell_ft {
-              height: 18px;
-              &::after {
-                content: none;
+              p {
+                float: left;
+              }
+              .weui_cell_ft {
+                &::after {
+                  content: none;
+                }
               }
             }
           }
@@ -340,7 +355,7 @@
     }
     &.active {
       .animal-backgorund-mask {
-        opacity: 0;
+        opacity: 0.5;
         border-color: #efefef;
         border-width: 80px;
         transform: scale(5);
