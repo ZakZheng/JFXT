@@ -52,7 +52,6 @@
     // 列表滚动区域初始化
     if (opts.listBar) {
       $(opts.listBar).height(opts.listBarHeight);
-
       var leftScrollItemLenght = $(opts.listBar).find('li').length,
         leftScrollItemHeight = $(opts.listBar).find('li').height(),
         leftScroll = new IScroll(opts.listBar, {
@@ -67,12 +66,19 @@
           if (!editFlag) {
             event.stopPropagation()
             $(this).addClass('on').siblings().removeClass('on');
+            console.log()
+            console.log(0 < leftScrollItemLenght * leftScrollItemHeight - opts.listBarHeight - index * leftScrollItemHeight)
             if (0 < leftScrollItemLenght * leftScrollItemHeight - opts.listBarHeight - index * leftScrollItemHeight) {
               event.preventDefault();
               leftScroll.scrollTo(0, -index * leftScrollItemHeight, 1000, IScroll.ease)
-            } else {
+              console.log(6)
+            } else if(opts.listBarHeight <= ($(opts.listBar).find('li').length * $(opts.listBar).find('li').height())){
               event.preventDefault();
               leftScroll.scrollTo(0, (-index * leftScrollItemHeight) - (leftScrollItemLenght * leftScrollItemHeight - opts.listBarHeight - index * leftScrollItemHeight), 1000, IScroll.ease)
+              console.log(7)
+            }
+            else {
+              
             }
             opts.confirm($(this))
               // if(opts.contentBar) rightScroll.refresh(); 如果左边列表数据也需要刷新，则使用这个
