@@ -15,8 +15,11 @@
       confirm: function(ret) {}, //普通模式点击回调当前选中对象
       compile: function(ret) {}, // 编辑模式选中回调当前选中对象
       submitChange: function(ret) {}, //提交编辑回调所有被选中对象
-      scrollContent: function(ret) {},
-      scrollContentFooter: function(ret) {},
+      scrollContent: function() {}, // 滚动时触发
+      scrollContentFooter: function() {}, // 滚动到底部是触发
+      moreSetting: function(ret) {},
+
+
     }
     var opts = Zepto.extend({}, defaults, options);
     // 判断是否为编辑模式
@@ -40,7 +43,7 @@
         $(this).on('tap', function(event) {
           if (!editFlag) {
             $(this).addClass('on').siblings().removeClass('on');
-            opts.confirm($(this))
+            opts.confirm($(this));
             if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
             if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
           } else {
@@ -66,22 +69,19 @@
           if (!editFlag) {
             event.stopPropagation()
             $(this).addClass('on').siblings().removeClass('on');
-            console.log()
-            console.log(0 < leftScrollItemLenght * leftScrollItemHeight - opts.listBarHeight - index * leftScrollItemHeight)
             if (0 < leftScrollItemLenght * leftScrollItemHeight - opts.listBarHeight - index * leftScrollItemHeight) {
               event.preventDefault();
               leftScroll.scrollTo(0, -index * leftScrollItemHeight, 1000, IScroll.ease)
               console.log(6)
-            } else if(opts.listBarHeight <= ($(opts.listBar).find('li').length * $(opts.listBar).find('li').height())){
+            } else if (opts.listBarHeight <= ($(opts.listBar).find('li').length * $(opts.listBar).find('li').height())) {
               event.preventDefault();
               leftScroll.scrollTo(0, (-index * leftScrollItemHeight) - (leftScrollItemLenght * leftScrollItemHeight - opts.listBarHeight - index * leftScrollItemHeight), 1000, IScroll.ease)
               console.log(7)
+            } else {
+
             }
-            else {
-              
-            }
-            opts.confirm($(this))
-              // if(opts.contentBar) rightScroll.refresh(); 如果左边列表数据也需要刷新，则使用这个
+            opts.confirm($(this));
+            // if(opts.contentBar) rightScroll.refresh(); 如果左边列表数据也需要刷新，则使用这个
             if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
             if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
           } else {
@@ -94,11 +94,11 @@
     if (opts.contentBar) {
       $(opts.contentBar).height(opts.contentBarHeight);
       var rightScroll = new IScroll(opts.contentBar, {
-          tap: 'click',
-          deceleration: 0.006,
-        }),
-        typeListItem = '.rule-right .type-list .weui_cell', // 不可编辑的内容列表
-        articleListItem = '.rule-right .article-list .weui_cell'; // 可编辑的内容列表
+        tap: 'click',
+        deceleration: 0.006,
+      });
+      if ($(".rule-right").length) var articleListItem = '.rule-right .weui_cell'; // 可编辑的内容列表
+      if ($(".department-content").length) var articleListItem = '.department-content .weui_cell'; // 可编辑的内容列表
 
       // 滚动事件
       rightScroll.on("scrollEnd", function() {
@@ -111,32 +111,29 @@
       // 未进入编辑状态时,内容列表只返回当前点击对象
       var defaultsListEvent = function() {
         // 没有动画标签时
-        if (!$('.animal-backgorund').length) {
-          $(typeListItem).each(function(index, el) {
-            $(this).on('tap', function(event) {
-              if (!editFlag) {
-                $(this).addClass('on').siblings().removeClass('on');
-                opts.confirm($(this))
-                if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
-                if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
-              } else {
-                return false;
-              }
-            });
+        // if ($('.animal-backgorund').length) {
+        $(articleListItem).each(function(index, el) {
+          var that = $(this);
+          $(this).on('tap', function(event) {
+            if (!editFlag) {
+              $(this).addClass('on').siblings().removeClass('on');
+              opts.confirm($(this));
+              if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
+              if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
+            } else {
+              return false;
+            }
           });
-          $(articleListItem).each(function(index, el) {
-            $(this).on('tap', function(event) {
-              if (!editFlag) {
-                $(this).addClass('on').siblings().removeClass('on');
-                opts.confirm($(this))
-                if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
-                if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
-              } else {
-                return false;
-              }
+          if ($(this).find('.weui_cell_more_setting').length) {
+            $(this).find('.weui_cell_more_setting').on('tap', function(event) {
+              event.stopPropagation();
+              opts.moreSetting(that);
             });
-          });
-        } else { // 添加了动画时
+          }
+        });
+
+        // }
+        /*else { // 添加了动画时
           $('.animal-backgorund').each(function(index, el) {
             if (!$(this).find('.animal-backgorund-mask').length) {
               var animalBackgorundMask = $('<div class="animal-backgorund-mask"></div>')
@@ -145,7 +142,7 @@
             $(this).on('tap', function(event) {
               if (!editFlag) {
                 $(this).addClass('on').siblings().removeClass('on');
-                opts.confirm($(this))
+                opts.confirm($(this));
                 if (opts.headBar) topScroll.refresh(); //加载完数据后重新定义宽度
                 if (opts.contentBar) rightScroll.refresh(); //加载完数据后重新定义宽度
               } else {
@@ -160,7 +157,7 @@
               $(this).siblings().removeClass('active').find('.animal-backgorund-mask').css('transition', 'inherit');
             });
           });
-        }
+        }*/
 
       }
       defaultsListEvent();
@@ -171,11 +168,14 @@
         editFlag = true;
         // 取消已有点击事件
         var abolishThatChange = function(that) {
-            $(that).each(function(index, el) {
-              $(this).unbind('tap');
-            });
-          }
-          // 定义底部弹出的＇确定＇，＇取消＇
+          $(that).each(function(index, el) {
+            $(this).unbind('tap');
+          });
+        };
+        // 可编辑的内容列表
+        if ($('.rule-right .article-list .weui_cell').length) articleListItem = '.rule-right .article-list .weui_cell';
+        if ($('.department-right .article-list .weui_cell').length) articleListItem = '.department-right .article-list .weui_cell';
+        // 定义底部弹出的＇确定＇，＇取消＇
         var alertLayer = $('<ul class="alertLayer clearfix">' + '<li class="item" id="submitChange"><a href="javascript:;"><i class="icon icon-66 circle"></i>确定</a></li>' + '<li class="item" id="abolish"><a href="javascript:;"><i class="icon icon-95 circle"></i>取消</a></li>' + '</ul>');
         // 在底部前方插入编辑栏
         $('#footer').prepend(alertLayer)

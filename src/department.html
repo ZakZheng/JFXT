@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
   <link rel="stylesheet" href="lib/css/weui.css" />
   <link rel="stylesheet" href="lib/css/weui2.css" />
+  <link rel="stylesheet" href="lib/css/weui3.css">
   <link rel="stylesheet" href="css/department.css">
   <script src="lib/js/zepto.min.js"></script>
   <script src="lib/iscroll/iscroll.js"></script>
@@ -14,31 +15,31 @@
 </head>
 
 <body ontouchstart>
-  <div class="rule-bar clearfix">
-    <div class="rule-top Scroll">
+  <div class="department-bar clearfix">
+    <div class="department-top Scroll">
       <div class="breadcrumb scroller">
-        <a class="home" href="javascript:;" data-id="1"><i class="icon icon-27"></i></a>
-        <a href="javascript:;" data-id="2">综合表现</a>
-        <a href="javascript:;" data-id="3">考勤</a>
-        <a href="javascript:;" data-id="4">综合表现</a>
-        <a href="javascript:;" data-id="5">综合表现</a>
-        <a href="javascript:;" data-id="6">综合表现</a>
-        <a href="javascript:;" data-id="7">综合表现</a>
-        <a href="javascript:;" data-id="8">综合表现</a>
-        <a href="javascript:;" data-id="9">综合表现</a>
-        <a href="javascript:;" data-id="10">综合表现</a>
+        <a class="home" href="javascript:;"><i class="icon icon-27"></i></a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">考勤</a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">综合表现</a>
+        <a href="javascript:;">综合表现</a>
       </div>
     </div>
-    <div class="add-department animal-backgorund">
+    <div id="addDepartment" class="add-department">
       <div class="add-bar"><i class="icon-add"></i><span>添加部门</span></div>
     </div>
-    <div class="rule-content-bar">
-      <div class="rule-content Scroll">
+    <div class="department-content-bar">
+      <div class="department-content Scroll">
         <div class="scroller">
           <div class="weui_cells weui_cells_access type-list">
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -46,12 +47,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -59,12 +60,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -72,12 +73,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -85,12 +86,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -98,12 +99,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -111,12 +112,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -124,12 +125,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -137,12 +138,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -150,12 +151,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -163,12 +164,12 @@
                     <li>员工（9）</li>i>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -176,12 +177,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -189,12 +190,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -202,12 +203,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -215,12 +216,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -228,12 +229,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -241,12 +242,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -254,12 +255,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -267,12 +268,12 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
             <a class="weui_cell animal-backgorund " href="javascript:;">
               <div class="weui_cell_bd weui_cell_primary">
-                <div class="department-bar">
+                <div class="department-item-bar">
                   <h3 class="department-title">客服部</h3>
                   <ul class="department-info">
                     <li>刘备</li>
@@ -280,7 +281,7 @@
                     <li>员工（9）</li>
                   </ul>
                 </div>
-                <div class="weui_cell_ft"><i class="icon-more"></i></div>
+                <div class="weui_cell_more_setting"><i class="icon-more"></i></div>
               </div>
             </a>
           </div>
@@ -300,6 +301,9 @@
       oncancel: function() {},
       onclear: function() {}
     });
+    /*    $('#timebtn').on('click', function() {
+
+        });*/
     $(document.body).on('touchstart', function(event) {
       $(".weui_search_input").blur();
     });
@@ -308,13 +312,13 @@
     });
 
     //  开启滑动和点击事件
-    $('.rule-bar').movingWindowClassifier({
-      headBar: ".rule-top",
-      // listBar: ".rule-left",
-      contentBar: ".rule-content",
-      headBarHeight: $('.rule-top').height(),
-      // listBarHeight: window.innerHeight - $('.rule-top').height() - $('#footer').height(),
-      contentBarHeight: window.innerHeight - $('.rule-top').height() - $('.rule-content-top').height() - $('.add-department').height(),
+    $('.department-bar').movingWindowClassifier({
+      headBar: ".department-top",
+      // listBar: ".department-left",
+      contentBar: ".department-content",
+      headBarHeight: $('.department-top').height(),
+      // listBarHeight: window.innerHeight - $('.department-top').height() - $('#footer').height(),
+      contentBarHeight: window.innerHeight - $('.department-top').height() - $('.department-content-top').height() - $('.add-department').height(),
       confirm: function(ret) {
         console.log(1)
       },
@@ -329,8 +333,46 @@
       },
       scrollContentFooter: function(ret) {
         console.log('滚到底部了');
+      },
+      moreSetting: function(ret) {
+        $.actions({
+          actions: [{
+            text: "选择负责人",
+            onClick: function() {
+              console.log(ret)
+            }
+          }, {
+            text: "添加子部门",
+            onClick: function() {
+              console.log(ret)
+              $.prompt("输入子部门名称", "子部门名称", function(text) {
+                return false;
+              }, function() {
+                //取消操作
+              });
+            }
+          }, {
+            text: "修改",
+            onClick: function() {
+              console.log(ret)
+            }
+          }, {
+            text: "删除",
+            onClick: function() {
+              console.log(ret)
+            }
+          }]
+        });
       }
     })
+    $('#addDepartment').on("click", function() {
+      $.prompt("输入部门名称", "部门名称", function(text) {
+        return false;
+      }, function() {
+        //取消操作
+      });
+    });
+
   });
   </script>
 </body>
