@@ -15,6 +15,7 @@
       confirm: function(ret) {}, //普通模式点击回调当前选中对象
       compile: function(ret) {}, // 编辑模式选中回调当前选中对象
       submitChange: function(ret) {}, //提交编辑回调所有被选中对象
+      abolishChange: function(ret) {}, //提交编辑回调所有被选中对象
       scrollContent: function() {}, // 滚动时触发
       scrollContentFooter: function() {}, // 滚动到底部是触发
       moreSetting: function(ret) {},
@@ -198,6 +199,7 @@
           setTimeout(function() {
             alertLayer.remove();
           }, 300);
+          opts.abolishChange();
           // 恢复未编辑状态的点击事件
           editFlag = false;
           defaultsListEvent();

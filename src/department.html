@@ -16,6 +16,7 @@
 
 <body ontouchstart>
   <div class="department-bar clearfix">
+  <!-- 
     <div class="department-top Scroll">
       <div class="breadcrumb scroller">
         <a class="home" href="javascript:;"><i class="icon icon-27"></i></a>
@@ -287,7 +288,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+    -->
+
+
+
   </div>
   <script>
   $(function() {
@@ -333,6 +338,9 @@
       },
       scrollContentFooter: function(ret) {
         console.log('滚到底部了');
+        if (!$('.department-content .scroller > p').length) {
+          $('.department-content .scroller').append($('<p style="text-align: center; color: #b0b0b0; font-size: 14px;">加载更多...</p>'))
+        }
       },
       moreSetting: function(ret) {
         $.actions({
